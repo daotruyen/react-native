@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>Number Guessing Game in HTML</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="message"></div>
+    <p> Guess your number: </p>
+    <input type="number" id="number">
+    <input type = "submit" value="Guess" id = "submitguess"> 
+
+    <script type="text/javascript">
+        
+        var ramdom = Math.floor(Math.random() * 100 + 1);
+        var guess = 10;
+        document.getElementById("submitguess").onclick = function(){
+            var input = document.getElementById("number").value;
+            if(guess>0){
+            if (input == ramdom) {
+                document.getElementById("message").innerHTML=`<p style="background:green;">Congratulations!! You guessed correctly.</p>`;
+            }
+            else if (input > ramdom) {
+                guess--;
+                document.getElementById("message").innerHTML=`<p style="background:red;">Sorry your guess is too high.You have ${guess} gueses left</p>`;
+            }
+            else {
+                guess--;
+                document.getElementById("message").innerHTML=`<p style="background:red">Sorry your guess is too low. You have ${guess} gueses left</p>`;
+            }
+        }
+        else {
+            document.getElementById("message").innerHTML=`<p style="background:red">You have run out of guesses</p>`;
+            
+        }
+        };
+    </script>
+</body>
+
+</html>
